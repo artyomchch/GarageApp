@@ -5,8 +5,9 @@
       <map>
         <entry key="..\:/Users/User/AndroidStudioProjects/GarageApp/app/src/main/res/drawable/shape.xml" value="0.195" />
         <entry key="..\:/Users/User/AndroidStudioProjects/GarageApp/app/src/main/res/layout/activity_main.xml" value="0.18802083333333333" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/GarageApp/app/src/main/res/layout/car_item.xml" value="0.33" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/GarageApp/app/src/main/res/layout/fragment_car.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/GarageApp/app/src/main/res/layout/car_item.xml" value="0.5" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/GarageApp/app/src/main/res/layout/fragment_car.xml" value="0.25" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/GarageApp/app/src/main/res/layout/fragment_car_item.xml" value="0.25" />
         <entry key="..\:/Users/User/AndroidStudioProjects/GarageApp/app/src/main/res/menu/top_app_bar.xml" value="0.4523809523809524" />
       </map>
     </option>

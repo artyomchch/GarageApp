@@ -2,10 +2,10 @@
 <androidx.fragment.app.FragmentContainerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container_view"
-    android:name="kozlov.artyom.garageapp.presentation.CarFragment"
+    android:name="kozlov.artyom.garageapp.presentation.mainfragment.CarFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.MainActivity"
+    tools:context=".presentation.mainfragment.MainActivity"
     tools:layout="@layout/fragment_car">
 
 </androidx.fragment.app.FragmentContainerView>

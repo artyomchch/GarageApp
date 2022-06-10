@@ -9,17 +9,29 @@ class CarListMapper @Inject constructor() {
     fun mapEntityToDbModel(carItem: CarItem) = CarItemDbModel(
         id = carItem.id,
         name = carItem.name,
-        brand = carItem.brand,
         model = carItem.model,
-        enable = carItem.enable
+        cylinderVolume = carItem.cylinderVolume,
+        pathToPic = carItem.pathToPic,
+        power = carItem.power,
+        fuel = carItem.fuel,
+        driveUnit = carItem.driveUnit,
+        color = carItem.color,
+        price = carItem.price
     )
+
 
     fun mapDbModelToEntity(carItemDbModel: CarItemDbModel) = CarItem(
         id = carItemDbModel.id,
         name = carItemDbModel.name,
-        brand = carItemDbModel.brand,
         model = carItemDbModel.model,
-        enable = carItemDbModel.enable
+        cylinderVolume = carItemDbModel.cylinderVolume,
+        pathToPic = carItemDbModel.pathToPic,
+        power = carItemDbModel.power,
+        fuel = carItemDbModel.fuel,
+        driveUnit = carItemDbModel.driveUnit,
+        color = carItemDbModel.color,
+        price = carItemDbModel.price
+
     )
 
     fun mapListDbModelToListEntity(list: List<CarItemDbModel>) = list.map {

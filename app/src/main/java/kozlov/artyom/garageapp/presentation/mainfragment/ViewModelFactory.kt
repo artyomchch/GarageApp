@@ -1,4 +1,4 @@
-package kozlov.artyom.garageapp.presentation
+package kozlov.artyom.garageapp.presentation.mainfragment
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

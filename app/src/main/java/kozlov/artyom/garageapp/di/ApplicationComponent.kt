@@ -3,7 +3,8 @@ package kozlov.artyom.garageapp.di
 import android.content.Context
 import dagger.BindsInstance
 import dagger.Component
-import kozlov.artyom.garageapp.presentation.CarFragment
+import kozlov.artyom.garageapp.presentation.mainfragment.CarFragment
+import kozlov.artyom.garageapp.presentation.secondfragment.CarItemFragment
 
 
 @ApplicationScope
@@ -13,6 +14,8 @@ import kozlov.artyom.garageapp.presentation.CarFragment
 interface ApplicationComponent {
 
     fun inject(fragment: CarFragment)
+
+    fun inject(fragment: CarItemFragment)
 
 
     @Component.Factory

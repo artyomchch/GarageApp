@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Garage App</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="some_text">sdfsfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasfsfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasfsfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasfsfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasfsfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasfsfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasfsfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasfsfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasfsfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasfsfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasfsfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasfsfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasfsfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasfsfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasfsfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasfsfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasfsfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasfsfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasfsfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasfsfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasfsfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasfsfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasfsfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasfsfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasfsfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasfsfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasfsfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasfsfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasfsfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasfsfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasfsfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasfsfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasfsfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasfsfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasdfsadfasfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasdfsadfasfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasdfsadfasfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasdfsadfasfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasdfsadfasfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasdfsadfasfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasdfsadfasfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasdfsadfasfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasdfsadfasfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasdfsadfasfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasdfsadfasfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasdfsadfasfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasdfsadfasfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasdfsadfasfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasdfsadfasfsdfsdafasdfasdfasfdasdfasdfasdfsadfsadfasdfasdfsadfasdfsdfsdf</string>
     <string name="sorting">sorting</string>
     <string name="filter">filter</string>
     <string name="add_car">add car</string>
@@ -17,5 +16,19 @@
     <string name="color">Blue</string>
     <string name="dollar">&#160;$</string>
     <string name="price">50 000</string>
+    <string name="invalid_name">Invalid name</string>
+    <string name="invalid_brand">Invalid brand</string>
+    <string name="invalid_cylinder_volume">Invalid_cylinder_volume</string>
+    <string name="car_name">Name</string>
+    <string name="model">Model</string>
+    <string name="cylinder">Cylinder</string>
+    <string name="power_hint">Power</string>
+    <string name="save">Save</string>
+    <string name="fuel">Fuel</string>
+    <string name="_2wd">2WD</string>
+    <string name="awd">AWD</string>
+    <string name="_4wd">4WD</string>
+    <string name="color_field">Color</string>
+    <string name="price_field">Price</string>
 
 </resources>

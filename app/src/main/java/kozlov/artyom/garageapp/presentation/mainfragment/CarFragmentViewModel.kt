@@ -1,4 +1,4 @@
-package kozlov.artyom.garageapp.presentation
+package kozlov.artyom.garageapp.presentation.mainfragment
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -20,13 +20,7 @@ class CarFragmentViewModel @Inject constructor(
     val carList = getCarListUseCase.invoke()
 
 
-    fun changeEnableState(carItem: CarItem) {
-        viewModelScope.launch {
-            val newItem = carItem.copy(enable = !carItem.enable)
-            editCarItemUseCase(newItem)
 
-        }
-    }
 
 
     fun deleteCarItem(carItem: CarItem) {

@@ -4,7 +4,8 @@ import androidx.lifecycle.ViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
-import kozlov.artyom.garageapp.presentation.CarFragmentViewModel
+import kozlov.artyom.garageapp.presentation.mainfragment.CarFragmentViewModel
+import kozlov.artyom.garageapp.presentation.secondfragment.CarItemViewModel
 
 @Module
 interface ViewModelModule {
@@ -12,7 +13,11 @@ interface ViewModelModule {
     @IntoMap
     @ViewModelKey(CarFragmentViewModel::class)
     @Binds
-    fun bindMainActivityViewModel(impl: CarFragmentViewModel): ViewModel
+    fun bindCarFragmentViewModel(impl: CarFragmentViewModel): ViewModel
 
+    @IntoMap
+    @ViewModelKey(CarItemViewModel::class)
+    @Binds
+    fun bindCarItemViewModel(impl: CarItemViewModel): ViewModel
 
 }

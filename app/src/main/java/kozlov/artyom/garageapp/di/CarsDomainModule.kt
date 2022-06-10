@@ -7,7 +7,7 @@ import dagger.Provides
 import kozlov.artyom.garageapp.data.database.AppDatabase
 import kozlov.artyom.garageapp.data.database.CarListDao
 import kozlov.artyom.garageapp.domain.repository.CarListRepository
-import tennisi.borzot.strada.fragments.add.data.repository.CarListRepositoryImpl
+import kozlov.artyom.garageapp.data.repository.CarListRepositoryImpl
 
 @Module
 interface CarsDomainModule {

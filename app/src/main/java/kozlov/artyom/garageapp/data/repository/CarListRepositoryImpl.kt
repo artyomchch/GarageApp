@@ -1,4 +1,4 @@
-package tennisi.borzot.strada.fragments.add.data.repository
+package kozlov.artyom.garageapp.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations

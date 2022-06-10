@@ -1,10 +1,15 @@
 package kozlov.artyom.garageapp.domain.entity
 
 data class CarItem(
+    val pathToPic: String,
     val name: String,
-    val brand: String,
     val model: String,
-    val enable: Boolean,
+    val cylinderVolume: Byte,
+    val power: Short,
+    val fuel: String,
+    val driveUnit: String,
+    val color: String,
+    val price: Int,
     var id: Int = UNDEFINED_ID
 ){
     companion object{
