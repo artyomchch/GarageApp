@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:hint="@string/car_name"
-            app:layout_constraintBottom_toTopOf="@+id/brand_text_field"
+            app:layout_constraintBottom_toTopOf="@+id/model_text_field"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed">
@@ -31,7 +31,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/brand_text_field"
+            android:id="@+id/model_text_field"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
             app:layout_constraintTop_toBottomOf="@+id/name_text_field">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_brand_field"
+                android:id="@+id/edit_model_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -57,13 +57,13 @@
             android:hint="@string/cylinder"
             app:layout_constraintBottom_toTopOf="@+id/power_text_field"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/brand_text_field">
+            app:layout_constraintTop_toBottomOf="@+id/model_text_field">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_model_field"
+                android:id="@+id/edit_cylinder_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number" />
+                android:inputType="numberDecimal" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -160,15 +160,40 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:hint="@string/price_field"
-            app:layout_constraintBottom_toTopOf="@+id/save_button"
+            app:layout_constraintBottom_toTopOf="@+id/photo_picker"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/color_text_field">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_price_field"
+                android:inputType="numberDecimal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <FrameLayout
+            android:id="@+id/photo_picker"
+            android:clickable="true"
+            android:background="@drawable/rectangle_photo"
+            android:layout_width="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="30dp"
+            android:layout_height="150dp"
+            app:layout_constraintBottom_toTopOf="@+id/save_button"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/price_text_field"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/image_picker"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_add">
+            </ImageView>
+        </FrameLayout>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/save_button"

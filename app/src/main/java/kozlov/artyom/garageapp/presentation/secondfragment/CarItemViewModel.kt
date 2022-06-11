@@ -22,13 +22,33 @@ class CarItemViewModel @Inject constructor(
     val errorInputName: LiveData<Boolean>
         get() = _errorInputName
 
-    private val _errorInputBrand = MutableLiveData<Boolean>()
-    val errorInputBrand: LiveData<Boolean>
-        get() = _errorInputBrand
-
     private val _errorInputModel = MutableLiveData<Boolean>()
     val errorInputModel: LiveData<Boolean>
         get() = _errorInputModel
+
+    private val _errorCountCylinder = MutableLiveData<Boolean>()
+    val errorCountCylinder: LiveData<Boolean>
+        get() = _errorCountCylinder
+
+    private val _errorCountPower = MutableLiveData<Boolean>()
+    val errorCountPower: LiveData<Boolean>
+        get() = _errorCountPower
+
+    private val _errorTypeFuel = MutableLiveData<Boolean>()
+    val errorTypeFuel: LiveData<Boolean>
+        get() = _errorTypeFuel
+
+    private val _errorTypeUnit = MutableLiveData<Boolean>()
+    val errorTypeUnit: LiveData<Boolean>
+        get() = _errorTypeUnit
+
+    private val _errorColor = MutableLiveData<Boolean>()
+    val errorColor: LiveData<Boolean>
+        get() = _errorColor
+
+    private val _errorPrice = MutableLiveData<Boolean>()
+    val errorPrice: LiveData<Boolean>
+        get() = _errorPrice
 
     private val _shouldCloseScreen = MutableLiveData<Unit>()
     val shouldCloseScreen: LiveData<Unit>
@@ -46,14 +66,39 @@ class CarItemViewModel @Inject constructor(
         }
     }
 
-    fun addCarItem(inputName: String?, inputBrand: String?, inputModel: String?) {
+    fun addCarItem(
+        imageUri: String,
+        inputName: String?,
+        inputModel: String?,
+        inputCountCylinder: String?,
+        inputCountPower: String?,
+        inputTypeFuel: String?,
+        inputColor: String?,
+        inputPrice: String?
+    ) {
         val name = parseName(inputName)
-        val brand = parseName(inputBrand)
         val model = parseName(inputModel)
-        val fieldsValid = validateInput(name, brand, model)
+        val countCylinder = parseName(inputCountCylinder)
+
+        val power = parseName(inputCountPower)
+        val fuel = parseName(inputTypeFuel)
+        val color = parseName(inputColor)
+        val price = parseName(inputPrice)
+
+        val fieldsValid = validateInput(name, model, countCylinder,  power, fuel, color, price)
         if (fieldsValid) {
             viewModelScope.launch {
-                val carItem = CarItem(name, brand, model, 2, 249, "Diesel", "4WD", "blue", 12)
+                val carItem = CarItem(
+                    pathToPic = imageUri,
+                    name = name,
+                    model = model,
+                    cylinderVolume = countCylinder,
+                    power = power,
+                    fuel = fuel,
+                    driveUnit = "4WD",
+                    color = color,
+                    price = price
+                )
                 addCarItemUseCase(carItem)
                 finishWork()
             }
@@ -61,15 +106,37 @@ class CarItemViewModel @Inject constructor(
         }
     }
 
-    fun editCarItem(inputName: String?, inputBrand: String?, inputModel: String?) {
+    fun editCarItem(
+        imageUri: String,
+        inputName: String?,
+        inputModel: String?,
+        inputCountCylinder: String?,
+        inputCountPower: String?,
+        inputTypeFuel: String?,
+        inputColor: String?,
+        inputPrice: String?
+    ) {
         val name = parseName(inputName)
-        val brand = parseName(inputBrand)
+        val countCylinder = parseName(inputCountCylinder)
         val model = parseName(inputModel)
-        val fieldsValid = validateInput(name, brand, model)
+        val power = parseName(inputCountPower)
+        val fuel = parseName(inputTypeFuel)
+        val color = parseName(inputColor)
+        val price = parseName(inputPrice)
+        val fieldsValid = validateInput(name,  model, countCylinder, power, fuel, color, price)
         if (fieldsValid) {
             _carItem.value?.let {
                 viewModelScope.launch {
-                    val item = it.copy(name = name, color = brand, model = model)
+                    val item = it.copy(
+                        pathToPic = imageUri,
+                        name = name,
+                        model = model,
+                        cylinderVolume = countCylinder,
+                        power = power,
+                        fuel = fuel,
+                        color = color,
+                        price = price
+                    )
                     editCarItemUseCase(item)
                     finishWork()
                 }
@@ -83,30 +150,62 @@ class CarItemViewModel @Inject constructor(
         _errorInputName.value = false
     }
 
-    fun resetErrorInputBrand() {
-        _errorInputBrand.value = false
+    fun resetErrorCountCylinder() {
+        _errorCountCylinder.value = false
     }
 
     fun resetErrorInputModel() {
         _errorInputModel.value = false
     }
 
+    fun resetPowerInput() {
+        _errorCountPower.value = false
+    }
+
+    fun resetFuelInput() {
+        _errorTypeFuel.value = false
+    }
+
+    fun resetInputColor() {
+        _errorColor.value = false
+    }
+
+    fun resetInputPrice() {
+        _errorPrice.value = false
+    }
+
     private fun parseName(inputName: String?): String {
         return inputName?.trim() ?: ""
     }
 
-    private fun validateInput(name: String, brand: String, model: String): Boolean {
+    private fun validateInput(name: String, model: String, cylinder: String, power: String, fuel: String, color: String, price: String): Boolean {
         var result = true
         if (name.isBlank()) {
             _errorInputName.value = true
             result = false
         }
-        if (brand.isBlank()) {
-            _errorInputBrand.value = true
-            result = false
-        }
         if (model.isBlank()) {
             _errorInputModel.value = true
+            result = false
+        }
+        if (cylinder.isBlank()) {
+            _errorCountCylinder.value = true
+            result = false
+        }
+        if (power.isBlank()) {
+            _errorCountPower.value = true
+            result = false
+        }
+        if (fuel.isBlank()) {
+            _errorTypeFuel.value = true
+            result = false
+        }
+        if (color.isBlank()) {
+            _errorColor.value = true
+            result = false
+        }
+        if (price.isBlank()) {
+            _errorPrice.value = true
             result = false
         }
         return result

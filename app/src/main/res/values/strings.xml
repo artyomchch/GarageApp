@@ -17,8 +17,12 @@
     <string name="dollar">&#160;$</string>
     <string name="price">50 000</string>
     <string name="invalid_name">Invalid name</string>
-    <string name="invalid_brand">Invalid brand</string>
-    <string name="invalid_cylinder_volume">Invalid_cylinder_volume</string>
+    <string name="invalid_model">Invalid model</string>
+    <string name="invalid_cylinder_volume">Invalid cylinder volume</string>
+    <string name="invalid_count_power">Invalid count power</string>
+    <string name="invalid_type_fuel">Invalid type fuel</string>
+    <string name="invalid_car_color">Invalid car color</string>
+    <string name="invalid_car_price">Invalid car price</string>
     <string name="car_name">Name</string>
     <string name="model">Model</string>
     <string name="cylinder">Cylinder</string>
@@ -30,5 +34,11 @@
     <string name="_4wd">4WD</string>
     <string name="color_field">Color</string>
     <string name="price_field">Price</string>
+    <string name="permission_granted">Location permissions is granted</string>
+    <string name="open_app_settings">Open</string>
+    <string name="forever_denied">Permission are denied forever</string>
+    <string name="permission_denied">Permission denied</string>
+    <string name="warning_permission_denied_dialog">You have denied permissions forever. You can change your decision in app settings\n\n
+        Would you like to open app settings?</string>
 
 </resources>

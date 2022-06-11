@@ -11,12 +11,12 @@ data class CarItemDbModel(
     val pathToPic: String,
     val name: String,
     val model: String,
-    val cylinderVolume: Byte,
-    val power: Short,
+    val cylinderVolume: String,
+    val power: String,
     val fuel: String,
     val driveUnit: String,
     val color: String,
-    val price: Int,
+    val price: String,
 
 
 )

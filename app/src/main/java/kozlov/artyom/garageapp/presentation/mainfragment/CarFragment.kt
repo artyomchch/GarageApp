@@ -2,6 +2,7 @@ package kozlov.artyom.garageapp.presentation.mainfragment
 
 
 import android.content.Context
+import android.media.Image
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.stfalcon.imageviewer.StfalconImageViewer
 import kozlov.artyom.garageapp.R
 import kozlov.artyom.garageapp.databinding.FragmentCarBinding
 import kozlov.artyom.garageapp.presentation.secondfragment.CarItemFragment
@@ -89,6 +92,12 @@ class CarFragment : Fragment() {
         carsListAdapter.onCarItemClickListener = {
             launchFragment(CarItemFragment.newInstanceEditItem(it.id), R.id.container_view)
         }
+
+//        carsListAdapter.onCarImageClickListener = {
+//
+//
+//
+//        }
     }
 
 
@@ -100,7 +109,8 @@ class CarFragment : Fragment() {
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val item = carsListAdapter.currentList[viewHolder.layoutPosition]
-                launchFragment(CarItemFragment.newInstanceEditItem(item.id), R.id.container_view)
+                //launchFragment(CarItemFragment.newInstanceEditItem(item.id), R.id.container_view)
+                viewModel.deleteCarItem(item)
             }
         }
 

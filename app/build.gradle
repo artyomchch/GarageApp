@@ -5,6 +5,7 @@ plugins {
     id 'kotlin-kapt'
 }
 
+
 android {
     compileSdk 32
 
@@ -35,6 +36,10 @@ android {
     buildFeatures {
         viewBinding true
     }
+
+
+
+
 }
 
 dependencies {
@@ -75,7 +80,8 @@ dependencies {
     implementation 'androidx.paging:paging-runtime-ktx:3.1.1'
     // Times Formatter
     implementation 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
-
+    // image viewer
+    implementation 'com.github.stfalcon-studio:StfalconImageViewer:v1.0.1'
 
     kapt "androidx.room:room-compiler:2.4.2"
     testImplementation 'junit:junit:4.13.2'
