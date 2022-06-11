@@ -4,11 +4,13 @@ package kozlov.artyom.garageapp.presentation.mainfragment
 import android.content.Context
 import android.media.Image
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -53,15 +55,35 @@ class CarFragment : Fragment() {
         setupRecyclerView()
         observeRecycler()
         setupSwipeListener()
+        toolbarButtonListener()
 
         return binding.root
+    }
+
+    private fun toolbarButtonListener() {
+        binding.mainToolbar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.sort -> {
+                    viewModel.sortByAlphabet()
+                    viewModel.carListSort.observe(viewLifecycleOwner){
+                        carsListAdapter.submitList(it)
+                    }
+                    true
+                }
+                R.id.filter -> {
+
+                    true
+                }
+
+                else -> false
+            }
+        }
     }
 
 
     private fun observeRecycler() {
         viewModel.carList.observe(viewLifecycleOwner) {
             carsListAdapter.submitList(it)
-
         }
     }
 
@@ -92,12 +114,6 @@ class CarFragment : Fragment() {
         carsListAdapter.onCarItemClickListener = {
             launchFragment(CarItemFragment.newInstanceEditItem(it.id), R.id.container_view)
         }
-
-//        carsListAdapter.onCarImageClickListener = {
-//
-//
-//
-//        }
     }
 
 

@@ -111,7 +111,7 @@ class CarItemFragment : Fragment() {
     private fun askUserForOpeningAppSettings() {
         val appSettingsIntent = Intent(
             Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-            Uri.fromParts("package", requireActivity().packageName, null)
+            Uri.fromParts(getString(R.string.package_value), requireActivity().packageName, null)
         )
         if (requireActivity().packageManager.resolveActivity(appSettingsIntent, PackageManager.MATCH_DEFAULT_ONLY) == null) {
             Toast.makeText(context, getString(R.string.forever_denied), Toast.LENGTH_SHORT).show()

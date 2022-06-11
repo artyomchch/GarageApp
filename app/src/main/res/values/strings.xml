@@ -40,5 +40,6 @@
     <string name="permission_denied">Permission denied</string>
     <string name="warning_permission_denied_dialog">You have denied permissions forever. You can change your decision in app settings\n\n
         Would you like to open app settings?</string>
+    <string name="package_value">package</string>
 
 </resources>
