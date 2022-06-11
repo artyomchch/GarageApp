@@ -23,8 +23,8 @@
 
             <ImageView
                 android:id="@+id/image_url"
-                android:layout_width="130dp"
-                android:layout_height="90dp"
+                android:layout_width="150dp"
+                android:layout_height="110dp"
                 android:layout_gravity="center"
                 android:contentDescription="@string/auto_image">
 
@@ -125,40 +125,46 @@
                         android:text="@string/drive_unit"
                         android:textSize="@dimen/medium" />
 
+
                     <TextView
                         android:id="@+id/color"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/color"
                         android:textSize="@dimen/medium" />
-                </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|center"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/shape"
-                    android:elevation="2dp"
-                    android:orientation="horizontal"
-                    android:padding="5dp">
 
-                    <TextView
-                        android:id="@+id/price"
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/price"
-                        android:textSize="12sp" />
+                        android:layout_marginStart="0dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/shape"
+                        android:elevation="2dp"
+                        android:orientation="horizontal"
+                        android:padding="4dp">
 
-                    <TextView
-                        android:id="@+id/dollar_content"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/dollar"
-                        android:textSize="12sp" />
+                        <TextView
+                            android:id="@+id/price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/price"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/dollar_content"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/dollar"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
 
                 </LinearLayout>
+
+
             </LinearLayout>
         </LinearLayout>
 

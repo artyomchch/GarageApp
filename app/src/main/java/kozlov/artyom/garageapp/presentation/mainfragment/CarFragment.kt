@@ -125,8 +125,8 @@ class CarFragment : Fragment() {
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val item = carsListAdapter.currentList[viewHolder.layoutPosition]
-                //launchFragment(CarItemFragment.newInstanceEditItem(item.id), R.id.container_view)
-                viewModel.deleteCarItem(item)
+                launchFragment(CarItemFragment.newInstanceEditItem(item.id), R.id.container_view)
+              //  viewModel.deleteCarItem(item)
             }
         }
 
