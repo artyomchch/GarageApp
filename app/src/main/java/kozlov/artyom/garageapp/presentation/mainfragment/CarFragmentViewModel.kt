@@ -1,6 +1,5 @@
 package kozlov.artyom.garageapp.presentation.mainfragment
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import kozlov.artyom.garageapp.domain.entity.CarItem
 import kozlov.artyom.garageapp.domain.usecases.DeleteCarItemUseCase
-import kozlov.artyom.garageapp.domain.usecases.EditCarItemUseCase
 import kozlov.artyom.garageapp.domain.usecases.GetCarListUseCase
 import javax.inject.Inject
 
@@ -26,7 +24,6 @@ class CarFragmentViewModel @Inject constructor(
 
 
 
-
     fun deleteCarItem(carItem: CarItem) {
         viewModelScope.launch {
             deleteCarItemUseCase(carItem)
@@ -34,13 +31,20 @@ class CarFragmentViewModel @Inject constructor(
 
     }
 
-    fun sortByAlphabet(){
-        _carListSort.value = carList.value?.sortedBy { it.name }
-        Log.d("TAG", ": ${carListSort.value}")
-      //  carList.value = carList.value?.sortedBy { it.name }
-//        val v = carList.value
-//        v?.sortedBy { it.name }
-//        carList.value =
+
+
+    fun sortByAlphabet() {
+        if (triggerValue) {
+            _carListSort.value = carList.value?.sortedBy { it.name }
+            triggerValue = false
+        } else {
+            _carListSort.value = carList.value?.sortedByDescending { it.name }
+            triggerValue = true
+        }
+    }
+
+    companion object{
+       private var triggerValue = true
     }
 
 }

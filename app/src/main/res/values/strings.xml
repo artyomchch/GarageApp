@@ -41,5 +41,12 @@
     <string name="warning_permission_denied_dialog">You have denied permissions forever. You can change your decision in app settings\n\n
         Would you like to open app settings?</string>
     <string name="package_value">package</string>
+    <string name="choose_power_count">Choose power count from list</string>
+    <string name="set_power_value">Set power value:</string>
+    <string name="empty_value">Value is Empty</string>
+    <string name="invalid_value">Invalid value</string>
+    <string name="up">UP</string>
+    <string name="cancel">Cancel</string>
+    <string name="down">Down</string>
 
 </resources>

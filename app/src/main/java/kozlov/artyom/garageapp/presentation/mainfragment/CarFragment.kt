@@ -2,21 +2,21 @@ package kozlov.artyom.garageapp.presentation.mainfragment
 
 
 import android.content.Context
-import android.media.Image
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentResultListener
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.observe
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.stfalcon.imageviewer.StfalconImageViewer
 import kozlov.artyom.garageapp.R
 import kozlov.artyom.garageapp.databinding.FragmentCarBinding
+import kozlov.artyom.garageapp.presentation.dialogfragment.FilterDialog
 import kozlov.artyom.garageapp.presentation.secondfragment.CarItemFragment
 import kozlov.artyom.garageapp.utils.MyApplication
 import javax.inject.Inject
@@ -56,8 +56,34 @@ class CarFragment : Fragment() {
         observeRecycler()
         setupSwipeListener()
         toolbarButtonListener()
+        observeSortingFilterData()
+        setupListenerFilterDialog()
 
         return binding.root
+    }
+
+    private fun showSortingDialog() {
+//        val sortingFragment = FilterDialog()
+//        sortingFragment.show(parentFragmentManager, FilterDialog.TAG)
+        FilterDialog.show(parentFragmentManager)
+    }
+
+    private fun setupListenerFilterDialog() {
+//        parentFragmentManager.setFragmentResultListener(FilterDialog.REQUEST_KEY, viewLifecycleOwner, FragmentResultListener { _, result ->
+//            when (result.getInt(FilterDialog.KEY_RESPONSE)){
+//                DialogInterface.BUTTON_POSITIVE -> Log.d("TAG", "setupListenerFilterDialog: ${result.getString(FilterDialog.KEY_RESPONSE)}")
+//              //  DialogInterface.BUTTON_NEGATIVE -> TODO()
+//
+//                 //   Toast.makeText(requireActivity().baseContext, "result.getString(FilterDialog.KEY_RESPONSE)", Toast.LENGTH_SHORT).show()
+//            }
+//        } )
+        FilterDialog.setupListener(parentFragmentManager, viewLifecycleOwner){
+            Log.d("TAG", "setupListenerFilterDialog: ${it})")
+        }
+    }
+
+    private fun observeSortingFilterData() {
+        viewModel.carListSort.observe(viewLifecycleOwner, carsListAdapter::submitList)
     }
 
     private fun toolbarButtonListener() {
@@ -65,13 +91,11 @@ class CarFragment : Fragment() {
             when (menuItem.itemId) {
                 R.id.sort -> {
                     viewModel.sortByAlphabet()
-                    viewModel.carListSort.observe(viewLifecycleOwner){
-                        carsListAdapter.submitList(it)
-                    }
+
                     true
                 }
                 R.id.filter -> {
-
+                    showSortingDialog()
                     true
                 }
 
@@ -81,10 +105,10 @@ class CarFragment : Fragment() {
     }
 
 
+
+
     private fun observeRecycler() {
-        viewModel.carList.observe(viewLifecycleOwner) {
-            carsListAdapter.submitList(it)
-        }
+        viewModel.carList.observe(viewLifecycleOwner, carsListAdapter::submitList)
     }
 
 
@@ -126,7 +150,7 @@ class CarFragment : Fragment() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val item = carsListAdapter.currentList[viewHolder.layoutPosition]
                 launchFragment(CarItemFragment.newInstanceEditItem(item.id), R.id.container_view)
-              //  viewModel.deleteCarItem(item)
+                //  viewModel.deleteCarItem(item)
             }
         }
 
