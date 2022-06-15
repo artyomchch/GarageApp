@@ -31,7 +31,13 @@ class CarFragmentViewModel @Inject constructor(
 
     }
 
+    fun filterByPower(value: Int, isFilterUp: Boolean){
 
+        if (isFilterUp){
+            _carListSort.value = carList.value?.filter { it.power.toInt() > value }
+        } else _carListSort.value = carList.value?.filter { it.power.toInt() < value }
+
+    }
 
     fun sortByAlphabet() {
         if (triggerValue) {

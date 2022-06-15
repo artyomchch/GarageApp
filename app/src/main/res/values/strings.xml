@@ -45,8 +45,8 @@
     <string name="set_power_value">Set power value:</string>
     <string name="empty_value">Value is Empty</string>
     <string name="invalid_value">Invalid value</string>
-    <string name="up">UP</string>
-    <string name="cancel">Cancel</string>
+    <string name="up">Up</string>
+    <string name="reset">Reset</string>
     <string name="down">Down</string>
 
 </resources>

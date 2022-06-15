@@ -3,6 +3,7 @@ package kozlov.artyom.garageapp.presentation.mainfragment
 
 import android.content.Context
 import android.content.DialogInterface
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,13 +11,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentResultListener
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import kozlov.artyom.garageapp.R
 import kozlov.artyom.garageapp.databinding.FragmentCarBinding
 import kozlov.artyom.garageapp.presentation.dialogfragment.FilterDialog
+import kozlov.artyom.garageapp.presentation.mainfragment.swipelistener.MyButton
+import kozlov.artyom.garageapp.presentation.mainfragment.swipelistener.MySwipeHelper
+import kozlov.artyom.garageapp.presentation.mainfragment.swipelistener.SwipeListenerButton
 import kozlov.artyom.garageapp.presentation.secondfragment.CarItemFragment
 import kozlov.artyom.garageapp.utils.MyApplication
 import javax.inject.Inject
@@ -63,22 +66,18 @@ class CarFragment : Fragment() {
     }
 
     private fun showSortingDialog() {
-//        val sortingFragment = FilterDialog()
-//        sortingFragment.show(parentFragmentManager, FilterDialog.TAG)
         FilterDialog.show(parentFragmentManager)
+
     }
 
     private fun setupListenerFilterDialog() {
-//        parentFragmentManager.setFragmentResultListener(FilterDialog.REQUEST_KEY, viewLifecycleOwner, FragmentResultListener { _, result ->
-//            when (result.getInt(FilterDialog.KEY_RESPONSE)){
-//                DialogInterface.BUTTON_POSITIVE -> Log.d("TAG", "setupListenerFilterDialog: ${result.getString(FilterDialog.KEY_RESPONSE)}")
-//              //  DialogInterface.BUTTON_NEGATIVE -> TODO()
-//
-//                 //   Toast.makeText(requireActivity().baseContext, "result.getString(FilterDialog.KEY_RESPONSE)", Toast.LENGTH_SHORT).show()
-//            }
-//        } )
-        FilterDialog.setupListener(parentFragmentManager, viewLifecycleOwner){
-            Log.d("TAG", "setupListenerFilterDialog: ${it})")
+
+        FilterDialog.setupListener(parentFragmentManager, viewLifecycleOwner) {
+            when (it.first) {
+                DialogInterface.BUTTON_POSITIVE -> viewModel.filterByPower(it.second?.toInt() ?: RESET_VALUE, true)
+                DialogInterface.BUTTON_NEGATIVE -> viewModel.filterByPower(it.second?.toInt() ?: RESET_VALUE, false)
+                DialogInterface.BUTTON_NEUTRAL -> viewModel.filterByPower(RESET_VALUE, true)
+            }
         }
     }
 
@@ -91,20 +90,16 @@ class CarFragment : Fragment() {
             when (menuItem.itemId) {
                 R.id.sort -> {
                     viewModel.sortByAlphabet()
-
                     true
                 }
                 R.id.filter -> {
                     showSortingDialog()
                     true
                 }
-
                 else -> false
             }
         }
     }
-
-
 
 
     private fun observeRecycler() {
@@ -114,6 +109,7 @@ class CarFragment : Fragment() {
 
     private fun setupRecyclerView() {
 
+
         with(binding.listRecyclerView) {
             carsListAdapter = CarsListAdapter()
             adapter = carsListAdapter
@@ -122,9 +118,9 @@ class CarFragment : Fragment() {
             }
         }
 
-
         setupClickItemListener()
         setupClickFabListener()
+
 
     }
 
@@ -142,20 +138,39 @@ class CarFragment : Fragment() {
 
 
     private fun setupSwipeListener() {
-        val callback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
-            override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
-                return false
+
+        val swipe = object : MySwipeHelper(requireContext(), binding.listRecyclerView, 200) {
+            override fun instantiateMyButton(viewHolder: RecyclerView.ViewHolder, buffer: MutableList<MyButton>) {
+                val item = carsListAdapter.currentList[viewHolder.layoutPosition]
+                buffer.add(
+                    MyButton(requireContext(), "Delete", 60, 0, Color.parseColor("#FF3C30"),
+                        object : SwipeListenerButton {
+                            override fun onClick(pos: Int) {
+                                viewModel.deleteCarItem(item)
+                                Log.d("TAG", "onClick: delete")
+                                Toast.makeText(requireContext(), "Delete button", Toast.LENGTH_SHORT).show()
+                            }
+
+                        })
+                )
+                buffer.add(
+                    MyButton(requireContext(), "Edit", 60, 0, Color.parseColor("#FF9502"),
+                        object : SwipeListenerButton {
+                            override fun onClick(pos: Int) {
+                                launchFragment(CarItemFragment.newInstanceEditItem(item.id), R.id.container_view)
+                                Log.d("TAG", "onClick: edit")
+                                Toast.makeText(requireContext(), "Edit button", Toast.LENGTH_SHORT).show()
+                            }
+
+                        })
+
+                )
+
+
             }
 
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val item = carsListAdapter.currentList[viewHolder.layoutPosition]
-                launchFragment(CarItemFragment.newInstanceEditItem(item.id), R.id.container_view)
-                //  viewModel.deleteCarItem(item)
-            }
         }
 
-        val itemTouchHelper = ItemTouchHelper(callback)
-        itemTouchHelper.attachToRecyclerView(binding.listRecyclerView)
     }
 
 
@@ -170,6 +185,10 @@ class CarFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        private const val RESET_VALUE = 0
     }
 
 }
